@@ -38,6 +38,7 @@ export default function Uebungsblaetter() {
         <div className="filter-row">
           {uebungsblaetter.map(b => (
             <button
+              type="button"
               key={b.id}
               className={`filter-btn${selectedId === b.id ? ' on' : ''}`}
               onClick={() => setSelectedId(b.id)}
@@ -74,7 +75,7 @@ export default function Uebungsblaetter() {
                   <>
                     {aufgabe.tipp && (
                       <>
-                        <button className="toggle-btn" onClick={() => toggleTipp(key)}>
+                        <button type="button" className="toggle-btn" onClick={() => toggleTipp(key)}>
                           {isTippOpen ? '▼ Tipp verbergen' : '▶ Tipp anzeigen'}
                         </button>
                         {isTippOpen && (
@@ -82,7 +83,7 @@ export default function Uebungsblaetter() {
                         )}
                       </>
                     )}
-                    <button className="toggle-btn" onClick={() => toggleSolution(key)}>
+                    <button type="button" className="toggle-btn" onClick={() => toggleSolution(key)}>
                       {isOpen ? '▼ Lösung verbergen' : '▶ Lösung anzeigen'}
                     </button>
                     {isOpen && (

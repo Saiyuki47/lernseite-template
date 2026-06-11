@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { themen } from '../data/themen'
 
 export default function Schema() {
-  const [openIds, setOpenIds] = useState<Set<number>>(new Set())
+  const [openIds, setOpenIds] = useState<Set<string>>(new Set())
 
-  const toggle = (idx: number) => {
+  const toggle = (id: string) => {
     setOpenIds(prev => {
       const next = new Set(prev)
-      next.has(idx) ? next.delete(idx) : next.add(idx)
+      next.has(id) ? next.delete(id) : next.add(id)
       return next
     })
   }
@@ -19,11 +19,11 @@ export default function Schema() {
         <p>Übersicht aller behandelten Themen und Inhalte.</p>
       </div>
 
-      {themen.map((thema, idx) => {
-        const isOpen = openIds.has(idx)
+      {themen.map(thema => {
+        const isOpen = openIds.has(thema.titel)
         return (
-          <div key={idx} className="card">
-            <button className="schema-data-toggle" onClick={() => toggle(idx)}>
+          <div key={thema.titel} className="card">
+            <button type="button" className="schema-data-toggle" onClick={() => toggle(thema.titel)}>
               <span className="schema-data-arrow">{isOpen ? '▼' : '▶'}</span>
               <span className="schema-data-name">{thema.titel}</span>
             </button>
@@ -34,8 +34,8 @@ export default function Schema() {
                 )}
                 {thema.punkte && thema.punkte.length > 0 && (
                   <ul className="thema-punkte">
-                    {thema.punkte.map((p, i) => (
-                      <li key={i}>{p}</li>
+                    {thema.punkte.map(p => (
+                      <li key={`${thema.titel}-${p}`}>{p}</li>
                     ))}
                   </ul>
                 )}
