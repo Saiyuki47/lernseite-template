@@ -14,17 +14,27 @@ import { WahrFalschQuestion } from './quiz/WahrFalschQuestion'
 // ---------------------------------------------------------------------------
 // Quiz-Hauptkomponente
 // ---------------------------------------------------------------------------
-type Phase = 'playing' | 'answered'
+type Phase = 'playing' | 'answered' | 'finished'
+
+// Fragen-Reihenfolge mischen (Fisher-Yates) – jede Quiz-Runde ist zufällig.
+function shuffledOrder(n: number): number[] {
+  const arr = Array.from({ length: n }, (_, i) => i)
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
 
 export default function Quiz() {
   const { streak, today, yesterday, recordCorrect } = useQuizProgress()
   const [qi, setQi] = useState(0)
   const [score, setScore] = useState(0)
   const [phase, setPhase] = useState<Phase>('playing')
-  const [finished, setFinished] = useState(false)
+  const [order, setOrder] = useState<number[]>(() => shuffledOrder(quizFragen.length))
 
   const total = quizFragen.length
-  const q = quizFragen[qi]
+  const q = quizFragen[order[qi]]
   const progress = total > 0 ? Math.round((qi / total) * 100) : 0
 
   const handleDone = useCallback((correct: boolean) => {
@@ -37,7 +47,7 @@ export default function Quiz() {
 
   const handleNext = useCallback(() => {
     if (qi + 1 >= total) {
-      setFinished(true)
+      setPhase('finished')
     } else {
       setQi(i => i + 1)
       setPhase('playing')
@@ -48,7 +58,7 @@ export default function Quiz() {
     setQi(0)
     setScore(0)
     setPhase('playing')
-    setFinished(false)
+    setOrder(shuffledOrder(quizFragen.length))
   }, [])
 
   const header = (
@@ -67,7 +77,7 @@ export default function Quiz() {
     )
   }
 
-  if (finished) {
+  if (phase === 'finished') {
     const pct = Math.round((score / total) * 100)
     const msg =
       score >= Math.ceil(total * 0.8)
@@ -104,13 +114,13 @@ export default function Quiz() {
         <p className="quiz-num">Frage {qi + 1} / {total} · {labelFor(q.art)}</p>
         <p className="quiz-q">{q.frage}</p>
 
-        {q.art === 'single' && <SingleQuestion key={qi} q={q} onDone={handleDone} />}
-        {q.art === 'multi' && <MultiQuestion key={qi} q={q} onDone={handleDone} />}
-        {q.art === 'zuordnung' && <ZuordnungQuestion key={qi} q={q} onDone={handleDone} />}
-        {q.art === 'reihenfolge' && <ReihenfolgeQuestion key={qi} q={q} onDone={handleDone} />}
-        {q.art === 'kategorien' && <KategorienQuestion key={qi} q={q} onDone={handleDone} />}
-        {q.art === 'eingabe' && <EingabeQuestion key={qi} q={q} onDone={handleDone} />}
-        {q.art === 'wahrfalsch' && <WahrFalschQuestion key={qi} q={q} onDone={handleDone} />}
+        {q.art === 'single' && <SingleQuestion key={order[qi]} q={q} onDone={handleDone} />}
+        {q.art === 'multi' && <MultiQuestion key={order[qi]} q={q} onDone={handleDone} />}
+        {q.art === 'zuordnung' && <ZuordnungQuestion key={order[qi]} q={q} onDone={handleDone} />}
+        {q.art === 'reihenfolge' && <ReihenfolgeQuestion key={order[qi]} q={q} onDone={handleDone} />}
+        {q.art === 'kategorien' && <KategorienQuestion key={order[qi]} q={q} onDone={handleDone} />}
+        {q.art === 'eingabe' && <EingabeQuestion key={order[qi]} q={q} onDone={handleDone} />}
+        {q.art === 'wahrfalsch' && <WahrFalschQuestion key={order[qi]} q={q} onDone={handleDone} />}
 
         <div className="quiz-nav">
           <span className="score-pill">{score} / {qi + (answered ? 1 : 0)} richtig{q.quelle ? ` · ${q.quelle}` : ''}</span>
