@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { QuizKategorien } from '../../types'
+import { shuffleIndices } from './shuffle'
 
 // ---------------------------------------------------------------------------
 // Fragetyp: Kategorisieren (Items in Töpfe einsortieren)
@@ -8,7 +9,8 @@ export function KategorienQuestion({ q, onDone }: { q: QuizKategorien; onDone: (
   const [placement, setPlacement] = useState<Record<number, string>>({})
   const [selected, setSelected] = useState<number | null>(null)
   const [revealed, setRevealed] = useState(false)
-  const pool = q.items.flatMap((_, i) => (placement[i] === undefined ? [i] : []))
+  const [poolOrder] = useState(() => shuffleIndices(q.items.length))
+  const pool = poolOrder.filter(i => placement[i] === undefined)
   const allPlaced = pool.length === 0
   const richtig = !q.items.some((it, i) => placement[i] !== it.kategorie)
 

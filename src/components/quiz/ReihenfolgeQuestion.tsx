@@ -1,22 +1,10 @@
 import { useState, useRef } from 'react'
 import type { QuizReihenfolge } from '../../types'
+import { shuffleIndices } from './shuffle'
 
 // ---------------------------------------------------------------------------
 // Fragetyp: Reihenfolge (Items per Drag/Pfeile sortieren)
 // ---------------------------------------------------------------------------
-function shuffleIndices(n: number): number[] {
-  const arr = Array.from({ length: n }, (_, i) => i)
-  for (let i = n - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
-  }
-  // Nicht bereits in korrekter Reihenfolge starten (sofern möglich).
-  if (n > 1 && arr.every((v, i) => v === i)) {
-    ;[arr[0], arr[1]] = [arr[1], arr[0]]
-  }
-  return arr
-}
-
 export function ReihenfolgeQuestion({ q, onDone }: { q: QuizReihenfolge; onDone: (correct: boolean) => void }) {
   const [order, setOrder] = useState<number[]>(() => shuffleIndices(q.schritte.length))
   const [revealed, setRevealed] = useState(false)

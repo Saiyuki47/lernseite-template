@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { QuizZuordnung } from '../../types'
+import { shuffleIndices } from './shuffle'
 
 function ZuordnungFeedback({ q, correct }: { q: QuizZuordnung; correct: boolean }) {
   return (
@@ -26,9 +27,10 @@ export function ZuordnungQuestion({ q, onDone }: { q: QuizZuordnung; onDone: (co
   const [assign, setAssign] = useState<Record<string, number>>({})
   const [selected, setSelected] = useState<number | null>(null)
   const [revealed, setRevealed] = useState(false)
+  const [poolOrder] = useState(() => shuffleIndices(q.paare.length))
 
   const placed = new Set(Object.values(assign))
-  const pool = begriffe.flatMap((_, i) => (placed.has(i) ? [] : [i]))
+  const pool = poolOrder.filter(i => !placed.has(i))
   const allAssigned = pool.length === 0
 
   const place = (begriffIdx: number, ziel: string) => {

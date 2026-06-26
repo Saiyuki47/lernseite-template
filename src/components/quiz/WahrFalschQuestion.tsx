@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { QuizWahrFalsch } from '../../types'
+import { shuffleIndices } from './shuffle'
 
 // ---------------------------------------------------------------------------
 // Fragetyp: Wahr/Falsch-Aussagen
@@ -7,6 +8,7 @@ import type { QuizWahrFalsch } from '../../types'
 export function WahrFalschQuestion({ q, onDone }: { q: QuizWahrFalsch; onDone: (correct: boolean) => void }) {
   const [answers, setAnswers] = useState<Record<number, boolean>>({})
   const [revealed, setRevealed] = useState(false)
+  const [perm] = useState(() => shuffleIndices(q.aussagen.length))
   const allAnswered = !q.aussagen.some((_, i) => answers[i] === undefined)
   const richtig = !q.aussagen.some((a, i) => answers[i] !== a.wahr)
 
@@ -24,7 +26,8 @@ export function WahrFalschQuestion({ q, onDone }: { q: QuizWahrFalsch; onDone: (
     <>
       <p className="quiz-hint">Für jede Aussage „Wahr" oder „Falsch" wählen.</p>
       <div className="wf-list">
-        {q.aussagen.map((a, i) => {
+        {perm.map(i => {
+          const a = q.aussagen[i]
           const ans = answers[i]
           const isWrong = revealed && ans !== undefined && ans !== a.wahr
           let rowCls = 'wf-row'

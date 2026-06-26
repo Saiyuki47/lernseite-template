@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { QuizSingle } from '../../types'
+import { shuffleIndices } from './shuffle'
 
 function SingleFeedback({ q, picked }: { q: QuizSingle; picked: number }) {
   const correct = picked === q.richtige
@@ -23,6 +24,7 @@ function SingleFeedback({ q, picked }: { q: QuizSingle; picked: number }) {
 // ---------------------------------------------------------------------------
 export function SingleQuestion({ q, onDone }: { q: QuizSingle; onDone: (correct: boolean) => void }) {
   const [picked, setPicked] = useState<number | null>(null)
+  const [perm] = useState(() => shuffleIndices(q.optionen.length))
   const revealed = picked !== null
 
   const pick = (i: number) => {
@@ -34,7 +36,8 @@ export function SingleQuestion({ q, onDone }: { q: QuizSingle; onDone: (correct:
   return (
     <>
       <div className="options">
-        {q.optionen.map((opt, i) => {
+        {perm.map(i => {
+          const opt = q.optionen[i]
           let cls = 'opt-btn'
           if (revealed) {
             if (i === q.richtige) cls += ' correct'

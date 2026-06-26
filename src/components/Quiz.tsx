@@ -10,28 +10,19 @@ import { ReihenfolgeQuestion } from './quiz/ReihenfolgeQuestion'
 import { KategorienQuestion } from './quiz/KategorienQuestion'
 import { EingabeQuestion } from './quiz/EingabeQuestion'
 import { WahrFalschQuestion } from './quiz/WahrFalschQuestion'
+import { shuffleIndices } from './quiz/shuffle'
 
 // ---------------------------------------------------------------------------
 // Quiz-Hauptkomponente
 // ---------------------------------------------------------------------------
 type Phase = 'playing' | 'answered' | 'finished'
 
-// Fragen-Reihenfolge mischen (Fisher-Yates) – jede Quiz-Runde ist zufällig.
-function shuffledOrder(n: number): number[] {
-  const arr = Array.from({ length: n }, (_, i) => i)
-  for (let i = n - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
-  }
-  return arr
-}
-
 export default function Quiz() {
   const { streak, today, yesterday, recordCorrect } = useQuizProgress()
   const [qi, setQi] = useState(0)
   const [score, setScore] = useState(0)
   const [phase, setPhase] = useState<Phase>('playing')
-  const [order, setOrder] = useState<number[]>(() => shuffledOrder(quizFragen.length))
+  const [order, setOrder] = useState<number[]>(() => shuffleIndices(quizFragen.length))
 
   const total = quizFragen.length
   const q = quizFragen[order[qi]]
@@ -58,7 +49,7 @@ export default function Quiz() {
     setQi(0)
     setScore(0)
     setPhase('playing')
-    setOrder(shuffledOrder(quizFragen.length))
+    setOrder(shuffleIndices(quizFragen.length))
   }, [])
 
   const header = (

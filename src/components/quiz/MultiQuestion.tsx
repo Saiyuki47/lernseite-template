@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import type { QuizMulti } from '../../types'
+import { shuffleIndices } from './shuffle'
 
 function MultiFeedback({ q, sel }: { q: QuizMulti; sel: Set<number> }) {
   const correctSet = new Set(q.richtige)
@@ -33,6 +34,7 @@ function MultiFeedback({ q, sel }: { q: QuizMulti; sel: Set<number> }) {
 export function MultiQuestion({ q, onDone }: { q: QuizMulti; onDone: (correct: boolean) => void }) {
   const [sel, setSel] = useState<Set<number>>(new Set())
   const [revealed, setRevealed] = useState(false)
+  const [perm] = useState(() => shuffleIndices(q.optionen.length))
   const correctSet = useMemo(() => new Set(q.richtige), [q.richtige])
 
   const toggle = (i: number) => {
@@ -55,7 +57,8 @@ export function MultiQuestion({ q, onDone }: { q: QuizMulti; onDone: (correct: b
     <>
       <p className="quiz-hint">Mehrere Antworten möglich – alle richtigen auswählen, dann prüfen.</p>
       <div className="options">
-        {q.optionen.map((opt, i) => {
+        {perm.map(i => {
+          const opt = q.optionen[i]
           const isSel = sel.has(i)
           let cls = 'opt-btn opt-btn--check'
           if (isSel && !revealed) cls += ' selected'
