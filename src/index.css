@@ -777,12 +777,12 @@ header > :first-child { flex: 1; }
   margin: 10px 0;
 }
 .toggle-btn--tips {
-  border-color: var(--amber);
-  color: var(--amber);
+  border-color: var(--green);
+  color: var(--green);
 }
 .toggle-btn--tips:hover {
-  background: var(--amber-dim);
-  color: var(--amber);
+  background: var(--green-dim);
+  color: var(--green);
 }
 .ub-tips-list {
   margin-top: 8px;
