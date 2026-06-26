@@ -7,10 +7,10 @@ import Quiz from './components/Quiz'
 import Uebungsblaetter from './components/Uebungsblaetter'
 import { useTheme } from './hooks/useTheme'
 
-export type TabId = 'referenz' | 'themen' | 'quiz' | 'aufgaben'
+export type TabId = 'uebung' | 'themen' | 'referenz' | 'quiz'
 
 function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('aufgaben')
+  const [activeTab, setActiveTab] = useState<TabId>('uebung')
   const { theme, toggle } = useTheme()
 
   return (
@@ -21,7 +21,7 @@ function App() {
         {activeTab === 'referenz' && <Cheatsheet />}
         {activeTab === 'themen' && <Schema />}
         {activeTab === 'quiz' && <Quiz />}
-        {activeTab === 'aufgaben' && <Uebungsblaetter />}
+        {activeTab === 'uebung' && <Uebungsblaetter />}
       </div>
     </>
   )
