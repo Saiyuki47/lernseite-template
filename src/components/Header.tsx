@@ -1,3 +1,5 @@
+import { SiteNav } from 'lernseiten-ui'
+
 interface Props {
   theme: 'dark' | 'light'
   onToggleTheme: () => void
@@ -12,6 +14,7 @@ export default function Header({ theme, onToggleTheme }: Props) {
         </div>
         <div className="subtitle">Dein Thema &mdash; Dein Untertitel</div>
       </div>
+      <SiteNav />
       <button
         type="button"
         className="theme-toggle"
