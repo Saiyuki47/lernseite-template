@@ -1,4 +1,4 @@
-import type { QuizFrage } from '../types'
+import type { QuizFrage } from 'lernseiten-ui'
 
 // TODO: Ersetze die Beispielfragen durch eigene – aus den Übungsblättern abgeleitet.
 // Sieben Fragetypen sind möglich:
