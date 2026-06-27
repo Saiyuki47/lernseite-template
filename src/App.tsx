@@ -1,16 +1,17 @@
-import { useState } from 'react'
 import Header from './components/Header'
 import Tabs from './components/Tabs'
 import Cheatsheet from './components/Cheatsheet'
 import Schema from './components/Schema'
 import Uebungsblaetter from './components/Uebungsblaetter'
-import { Quiz, useTheme } from 'lernseiten-ui'
+import { Quiz, useTheme, useHashTab } from 'lernseiten-ui'
 import { quizFragen } from './data/quiz'
 
 export type TabId = 'uebung' | 'themen' | 'referenz' | 'quiz'
 
+const TABS: readonly TabId[] = ['uebung', 'themen', 'referenz', 'quiz']
+
 function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('uebung')
+  const [activeTab, setActiveTab] = useHashTab(TABS, 'uebung')
   const { theme, toggle } = useTheme()
 
   return (
