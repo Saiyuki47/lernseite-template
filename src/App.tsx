@@ -3,7 +3,6 @@ import Tabs from './components/Tabs'
 import { Header, GlobalSearch, useTheme, useHashTab } from 'lernseiten-ui'
 import { quizFragen } from './data/quiz'
 import { karteikarten } from './data/karteikarten'
-import { searchIndex } from './data/searchIndex'
 
 const Cheatsheet = lazy(() => import('./components/Cheatsheet'))
 const Schema = lazy(() => import('./components/Schema'))
@@ -25,7 +24,7 @@ function App() {
       <div className="container">
         <Tabs activeTab={activeTab} onTabChange={setActiveTab} />
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>
-          <GlobalSearch index={searchIndex} onNavigate={t => setActiveTab(t as TabId)} />
+          <GlobalSearch loadIndex={() => import('./data/searchIndex').then(m => m.searchIndex)} onNavigate={t => setActiveTab(t as TabId)} />
         </div>
         <Suspense fallback={<div className="card"><p className="quiz-hint">Lädt …</p></div>}>
           {activeTab === 'referenz' && <Cheatsheet />}
