@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { Tabs as SharedTabs, type TabDef } from 'lernseiten-ui'
 import type { TabId } from '../App'
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   onTabChange: (tab: TabId) => void
 }
 
-const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
+const tabs: TabDef<TabId>[] = [
   {
     id: 'uebung',
     label: 'Übungsblätter',
@@ -64,19 +64,5 @@ const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
 ]
 
 export default function Tabs({ activeTab, onTabChange }: Props) {
-  return (
-    <div className="tabs">
-      {tabs.map(tab => (
-        <button
-          type="button"
-          key={tab.id}
-          className={`tab${activeTab === tab.id ? ' active' : ''}`}
-          onClick={() => onTabChange(tab.id)}
-        >
-          {tab.icon}
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  )
+  return <SharedTabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange} />
 }
