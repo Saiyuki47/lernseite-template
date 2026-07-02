@@ -7,10 +7,10 @@ Ein wiederverwendbares React-Template für interaktive Lernseiten zu beliebigen 
 | Tab | Beschreibung |
 |-----|-------------|
 | **Übungsblätter** | Aufgaben nach Blatt geordnet, mit optionalem Tipp und aufklappbarer Musterlösung |
-| **Aufgaben** | Alle Aufgaben nach Schwierigkeit gefiltert, ebenfalls mit Tipp & Lösung |
-| **Quiz** | Multiple-Choice-Quiz mit Fortschrittsbalken, Feedback und Ergebnisauswertung |
-| **Referenz** | Cheatsheet-Karten als schnelle Nachschlagereferenz |
 | **Themen** | Strukturierte Übersicht der Lernthemen mit Stichpunkten |
+| **Referenz** | Erklärte Nachschlage-Karten (gemeinsame `Referenz`-Komponente aus `lernseiten-ui`) |
+| **Quiz** | Quiz mit Fortschrittsbalken, Feedback und Ergebnisauswertung |
+| **Karteikarten** | Spaced-Repetition-Lernkarten (SM-2), aus den Inhalten abgeleitet |
 
 ## Quickstart
 
