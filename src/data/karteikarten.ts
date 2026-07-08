@@ -6,12 +6,11 @@ import { quizFragen } from './quiz'
 // Musterlösung) und Quizfragen (Frage → Erklärung). So bleibt nur eine Quelle
 // zu pflegen. Bei Bedarf hier eigene Karten ergänzen.
 export const karteikarten: FlashCard[] = [
-  ...aufgaben.map(a => ({
-    id: `a-${a.id}`,
-    front: a.aufgabeText,
-    back: a.loesung,
-    tag: a.titel,
-  })),
+  ...aufgaben.flatMap(a =>
+    a.loesung
+      ? [{ id: `a-${a.id}`, front: a.aufgabeText, back: a.loesung, tag: a.titel }]
+      : [],
+  ),
   ...quizFragen.map((q, i) => ({
     id: `q-${i}`,
     front: q.frage,

@@ -101,10 +101,14 @@ export default function Uebungsblaetter() {
                           {isTippOpen && <p className="tipp-block">{aufgabe.tipp}</p>}
                         </>
                       )}
-                      <button type="button" className="toggle-btn" onClick={() => toggleSolution(key)}>
-                        {isOpen ? '▼ Lösung verbergen' : '▶ Lösung anzeigen'}
-                      </button>
-                      {isOpen && <pre className="sql-block visible">{aufgabe.loesung}</pre>}
+                      {aufgabe.loesung && (
+                        <>
+                          <button type="button" className="toggle-btn" onClick={() => toggleSolution(key)}>
+                            {isOpen ? '▼ Lösung verbergen' : '▶ Lösung anzeigen'}
+                          </button>
+                          {isOpen && <pre className="sql-block visible">{aufgabe.loesung}</pre>}
+                        </>
+                      )}
                     </>
                   )}
                   <button
