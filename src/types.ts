@@ -1,11 +1,7 @@
 export type Schwierigkeit = 'einfach' | 'mittel' | 'schwer'
 
-export interface ReferenzKarte {
-  titel: string
-  inhalt: string
-}
-
-// Quiz-Typen (QuizFrage etc.) leben jetzt im geteilten Paket `lernseiten-ui`.
+// Referenz-Karten (ReferenzKarte) und Quiz-Typen (QuizFrage etc.) kommen aus dem
+// geteilten Paket `lernseiten-ui`; Begriffe (BegriffGruppe) aus `data/begriffe.ts`.
 
 export interface Aufgabe {
   id: string
@@ -29,10 +25,4 @@ export interface Uebungsblatt {
   typ: 'Hausaufgabe' | 'Präsenzaufgabe'
   beschreibung?: string
   aufgaben: UebungsblattAufgabe[]
-}
-
-export interface Thema {
-  titel: string
-  beschreibung?: string
-  punkte?: string[]
 }

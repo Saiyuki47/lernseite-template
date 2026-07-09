@@ -1,18 +1,4 @@
 /* SQL BLOCK */
-.sql-block {
-  margin-top: 12px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--blue);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.9;
-  white-space: pre-wrap;
-  color: var(--text);
-}
-.kw { color: var(--blue); font-weight: 500; }
 .tipp-block {
   margin-top: 10px;
   background: var(--bg);
@@ -53,129 +39,6 @@
   line-height: 2;
   white-space: pre-wrap;
 }
-.cm { color: var(--text3); font-style: italic; }
-
-/* SCHEMA */
-.filter-row { display: flex; gap: 6px; margin-bottom: 1.25rem; flex-wrap: wrap; }
-.filter-btn {
-  padding: 5px 14px;
-  font-size: 12px;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  border: 1px solid var(--border2);
-  border-radius: 6px;
-  background: transparent;
-  color: var(--text2);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.filter-btn:hover { background: var(--bg3); color: var(--text); }
-.filter-btn.on { background: var(--blue-dim); color: var(--blue); border-color: rgba(77,159,255,0.3); }
-
-.schema-wrap { overflow-x: auto; }
-.schema-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-.schema-table th {
-  text-align: left;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--border2);
-  color: var(--text3);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-}
-.schema-table td {
-  padding: 6px 12px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-.schema-table tr:last-child td { border-bottom: none; }
-.schema-table tr:hover td { background: var(--bg3); }
-.tname { font-weight: 600; color: var(--blue); font-family: var(--font-mono); font-size: 12px; }
-.col-mono { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
-.type-mono { font-family: var(--font-mono); font-size: 11px; color: var(--text3); }
-.pk-badge {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  background: var(--amber-dim);
-  color: var(--amber);
-  border: 1px solid rgba(245,166,35,0.25);
-  padding: 1px 5px;
-  border-radius: 4px;
-  margin-left: 6px;
-  vertical-align: middle;
-}
-.nn-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--red);
-  opacity: 0.6;
-}
-
-
-/* SCHEMA HELPERS */
-.card--flush { padding: 0 !important; overflow: hidden; }
-.schema-legend-pk { color: var(--amber); font-family: var(--font-mono); font-size: 12px; }
-.schema-legend-nn { color: var(--red); font-size: 12px; }
-.schema-col-table { width: 160px; }
-.schema-col-center { text-align: center; }
-
-/* SCHEMA DATA BROWSER */
-.schema-data-card { padding: 12px 16px !important; }
-.schema-data-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-align: left;
-}
-.schema-data-arrow { font-size: 11px; color: var(--text3); min-width: 12px; }
-.schema-data-name {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-}
-.schema-db-badge {
-  font-size: 10px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  padding: 2px 6px;
-  border-radius: 4px;
-  letter-spacing: 0.04em;
-}
-.schema-db-badge--pv { background: var(--green-dim); color: var(--green); border: 1px solid rgba(80,200,120,0.25); }
-.schema-db-badge--nw { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(77,159,255,0.25); }
-.schema-db-badge--uni { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,166,35,0.25); }
-.schema-data-meta { font-size: 12px; color: var(--text3); font-family: var(--font-mono); margin-left: auto; }
-.schema-data-table-wrap { margin-top: 12px; }
-.schema-no-data {
-  margin-top: 10px;
-  padding: 10px 12px;
-  background: var(--bg2);
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-.schema-no-data-cols {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text2);
-  line-height: 1.7;
-  margin-bottom: 4px;
-}
-.schema-no-data-hint { font-size: 11px; color: var(--text3); }
 
 /* THEMEN */
 .thema-detail { margin-top: 0.75rem; }
@@ -189,146 +52,7 @@
   .tab { font-size: 12px; padding: 7px 10px; }
 }
 
-/* ÜBUNGSBLATT */
-.ub-header { border-left: 3px solid var(--blue); }
-.ub-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.ub-badge {
-  font-size: 11px;
-  font-weight: 600;
-  font-family: var(--font-mono);
-  padding: 2px 8px;
-  border-radius: 5px;
-  background: var(--blue-dim);
-  color: var(--blue);
-  border: 1px solid rgba(77,159,255,0.25);
-  letter-spacing: 0.03em;
-}
-.ub-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-.ub-desc {
-  font-size: 13px;
-  color: var(--text3);
-  line-height: 1.7;
-  border-top: 1px solid var(--border);
-  padding-top: 10px;
-  margin-top: 6px;
-}
-.ub-task-nr {
-  font-size: 11px;
-  font-family: var(--font-mono);
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
-}
-
-/* RELEVANT TABLES */
-.ub-tables-section {
-  margin: 14px 0 10px;
-  border-top: 1px solid var(--border);
-  padding-top: 12px;
-}
-.ub-tables-label {
-  font-size: 11px;
-  font-family: var(--font-mono);
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
-}
-.ub-table-wrap {
-  margin-bottom: 10px;
-}
-.ub-table-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-family: var(--font-mono);
-  font-weight: 600;
-  color: var(--text2);
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-  margin-bottom: 6px;
-}
-.ub-table-toggle:hover { background: var(--bg3); color: var(--text); }
-.ub-table-rowcount {
-  font-weight: 400;
-  color: var(--text3);
-  font-size: 11px;
-}
-.ub-table-scroll {
-  overflow-x: auto;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-.ub-table {
-  border-collapse: collapse;
-  font-size: 12px;
-  font-family: var(--font-mono);
-  width: 100%;
-  min-width: max-content;
-}
-.ub-table th {
-  background: var(--bg2);
-  color: var(--amber);
-  padding: 6px 10px;
-  text-align: left;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid var(--border);
-  white-space: nowrap;
-}
-.ub-table td {
-  padding: 4px 10px;
-  color: var(--text2);
-  border-bottom: 1px solid var(--border);
-  white-space: nowrap;
-}
-.ub-table tbody tr:last-child td { border-bottom: none; }
-.ub-table tbody tr:hover td { background: var(--bg2); }
-.ub-null { color: var(--text3); font-style: italic; }
-
-/* QUERY RESULT */
-.ub-result-section {
-  margin-top: 12px;
-  border-top: 1px solid var(--border);
-  padding-top: 10px;
-}
-.ub-result-label {
-  font-size: 11px;
-  font-family: var(--font-mono);
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
-}
-.ub-result-table th { color: var(--blue); }
-.ub-result-count {
-  font-size: 11px;
-  font-family: var(--font-mono);
-  color: var(--text3);
-  margin-top: 6px;
-}
-
 /* SQL TIPS */
-.ub-tips-section {
-  margin: 10px 0;
-}
 .toggle-btn--tips {
   border-color: var(--green);
   color: var(--green);
@@ -337,39 +61,154 @@
   background: var(--green-dim);
   color: var(--green);
 }
-.ub-tips-list {
-  margin-top: 8px;
+
+/* ===== Referenz-Untertabs (Themen / Begriffe lernen) ===== */
+.ref-switch {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
 }
-.ub-tip-card {
-  background: var(--bg2);
+.ref-switch-tab {
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--amber);
-  border-radius: 6px;
-  padding: 10px 14px;
-  margin-bottom: 8px;
+  border-radius: 7px;
+  background: var(--bg2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
-.ub-tip-keyword {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--amber);
-  margin-bottom: 4px;
+.ref-switch-tab:hover {
+  border-color: var(--blue);
 }
-.ub-tip-desc {
-  font-size: 13px;
-  color: var(--text2);
-  line-height: 1.6;
-  margin-bottom: 8px;
-}
-.ub-tip-example {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text3);
-  background: var(--bg3);
-  border-radius: 5px;
-  padding: 8px 10px;
-  margin: 0;
-  white-space: pre-wrap;
-  line-height: 1.6;
+.ref-switch-tab.active {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
 }
 
+/* ===== Begriffe lernen (Glossar mit Lernmodus) ===== */
+.beg-intro {
+  color: var(--text2);
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+.beg-toolbar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+.beg-filter {
+  flex: 1 1 220px;
+  max-width: 340px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.beg-filter:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.beg-lern-btn {
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.beg-lern-btn:hover {
+  border-color: var(--blue);
+}
+.beg-lern-btn.active {
+  background: var(--amber, #d97706);
+  border-color: var(--amber, #d97706);
+  color: #fff;
+}
+.beg-leer {
+  color: var(--text2);
+  font-style: italic;
+}
+.beg-gruppe {
+  margin-bottom: 1.4rem;
+}
+.beg-gruppe-titel {
+  font-size: 1rem;
+  color: var(--blue);
+  border-left: 3px solid var(--blue);
+  padding-left: 0.65rem;
+  margin: 1.2rem 0 0.6rem;
+}
+.beg-liste {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.beg-item {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) 1fr;
+  gap: 0.35rem 1rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg2);
+}
+@media (max-width: 640px) {
+  .beg-item {
+    grid-template-columns: 1fr;
+  }
+}
+.beg-begriff {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.55;
+}
+.beg-definition {
+  margin: 0;
+  position: relative;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.65;
+}
+.beg-merke {
+  margin: 0.3rem 0 0;
+  font-size: 12.5px;
+  color: var(--green, #16a34a);
+}
+.beg-merke-label {
+  font-weight: 700;
+}
+/* Lernmodus: Definition verdeckt, per Klick aufdecken */
+.beg-item--verdeckt {
+  cursor: pointer;
+}
+.beg-item--verdeckt .beg-definition-inhalt {
+  filter: blur(7px);
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+}
+.beg-item--verdeckt:hover {
+  border-color: var(--blue);
+}
+.beg-aufdecken-hinweis {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+}
