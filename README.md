@@ -8,6 +8,7 @@ Die Tab-Reihenfolge kommt zentral aus `lernseiten-ui` und ist über alle Lernsei
 
 | Tab | Beschreibung |
 |-----|-------------|
+| **Übersicht** | Standard-Tab: zeigt die selbst geschriebene [`Übersicht.md`](Übersicht.md) – wie die Seite funktioniert und woher die Inhalte kommen |
 | **Übungsblätter** | Aufgaben nach Blatt geordnet, mit optionalem Tipp und aufklappbarer Musterlösung |
 | **Referenz** | Zwei Untertabs: **📚 Themen** (Nachschlage-Karten, optional mit Beispielen) und **🧠 Begriffe lernen** (Glossar mit Lernmodus) |
 | **Hilfsmittel** | Druckbarer Spickzettel auf A4 (`🖨️ Drucken`) |
